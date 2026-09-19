@@ -1,0 +1,815 @@
+PRD - SISTEM INFORMASI PERUMAHAN
+Versi 1.0
+
+1. INFORMASI DOKUMEN
+Nama Produk      : Sistem Informasi Perumahan
+Jenis Produk     : Website Sistem Informasi
+Target Pengguna  : Pengurus Perumahan dan Warga
+Platform         : Web Responsive (Desktop dan Mobile)
+Model Akses      : Login berbasis Role
+Role             : Pengurus dan Warga
+
+2. LATAR BELAKANG
+Sistem dibuat untuk membantu pengurus perumahan mengelola data rumah, warga,
+tagihan air, tagihan sampah, pembayaran, kas masuk, kas keluar, dan laporan
+keuangan secara terstruktur dan transparan.
+
+Warga dapat mengakses informasi yang relevan melalui akun masing-masing,
+tetapi tidak memiliki hak untuk menambah, mengubah, atau menghapus data
+keuangan maupun data operasional.
+
+3. TUJUAN PRODUK
+- Digitalisasi administrasi perumahan.
+- Mempermudah pengurus mengelola tagihan dan pembayaran.
+- Mengetahui rumah yang sudah dan belum membayar.
+- Memisahkan dan memantau keuangan air, sampah, dan kas umum.
+- Menyediakan laporan keuangan yang mudah dipahami.
+- Meningkatkan transparansi informasi kepada warga.
+- Menyediakan riwayat transaksi yang jelas.
+- Mengurangi pencatatan manual dan kesalahan administrasi.
+
+4. RUANG LINGKUP V1.0
+
+MODUL PENGURUS:
+- Dashboard
+- Data rumah
+- Data warga
+- Tagihan air
+- Tagihan sampah
+- Pembayaran
+- Kas masuk
+- Kas keluar
+- Laporan
+- Pengumuman
+- Manajemen akun
+- Audit log dasar
+
+MODUL WARGA:
+- Dashboard
+- Informasi rumah sendiri
+- Tagihan rumah sendiri
+- Riwayat pembayaran rumah sendiri
+- Ringkasan keuangan perumahan
+- Informasi/pengumuman
+- Profil akun
+
+5. ROLE DAN HAK AKSES
+
+5.1 PENGURUS
+Pengurus memiliki akses CRUD (Create, Read, Update, Delete) terhadap data
+yang menjadi tanggung jawabnya.
+
+Pengurus dapat:
+- Menambah, melihat, mengubah, dan menghapus data rumah.
+- Menambah, melihat, mengubah, dan menghapus data warga.
+- Membuat dan mengelola tagihan air.
+- Membuat dan mengelola tagihan sampah.
+- Mencatat pembayaran.
+- Mengelola kas masuk.
+- Mengelola kas keluar.
+- Membuat dan melihat laporan.
+- Membuat dan mengelola pengumuman.
+- Mengelola akun warga.
+- Melihat audit log.
+
+5.2 WARGA
+Warga bersifat READ ONLY terhadap informasi sistem.
+
+Warga dapat:
+- Melihat dashboard.
+- Melihat data rumahnya sendiri.
+- Melihat tagihan air rumahnya sendiri.
+- Melihat tagihan sampah rumahnya sendiri.
+- Melihat riwayat pembayaran rumahnya sendiri.
+- Melihat ringkasan keuangan yang dipublikasikan.
+- Melihat pengumuman.
+- Mengubah informasi profil yang memang diizinkan sistem, jika fitur tersebut
+  diaktifkan.
+
+Warga TIDAK dapat:
+- Membuat transaksi keuangan.
+- Mengubah transaksi keuangan.
+- Menghapus transaksi keuangan.
+- Membuat tagihan.
+- Mengubah nominal tagihan.
+- Mengubah status pembayaran.
+- Mengubah saldo.
+- Mengubah data rumah.
+- Mengubah data warga lain.
+- Menghapus data.
+
+CATATAN KEAMANAN:
+Pembatasan warga harus diterapkan di backend/API, bukan hanya dengan
+menyembunyikan tombol pada frontend. Setiap endpoint yang mengubah data
+harus memeriksa role dan permission pengguna.
+
+6. DASHBOARD PENGURUS
+
+Dashboard menampilkan ringkasan kondisi perumahan.
+
+Kartu statistik:
+- Total rumah.
+- Rumah aktif.
+- Rumah kosong/nonaktif.
+- Total warga.
+- Total tagihan air bulan berjalan.
+- Total tagihan sampah bulan berjalan.
+- Total sudah bayar.
+- Total belum bayar.
+- Pemasukan bulan berjalan.
+- Pengeluaran bulan berjalan.
+- Saldo kas.
+
+Grafik:
+- Pemasukan vs pengeluaran.
+- Pembayaran air.
+- Pembayaran sampah.
+- Tunggakan.
+- Perbandingan pembayaran lunas dan belum lunas.
+
+Quick action:
+- Tambah pembayaran.
+- Tambah kas masuk.
+- Tambah kas keluar.
+- Buat tagihan.
+- Tambah pengumuman.
+
+7. DASHBOARD WARGA
+
+Dashboard warga menampilkan:
+- Nomor rumah.
+- Nama pemilik/kepala keluarga.
+- Status rumah.
+- Tagihan air terbaru.
+- Tagihan sampah terbaru.
+- Total tagihan belum lunas.
+- Riwayat pembayaran terbaru.
+- Pengumuman terbaru.
+- Ringkasan keuangan perumahan yang dapat dilihat publik.
+
+Warga tidak dapat melihat rincian transaksi warga lain.
+
+8. DATA RUMAH
+
+Field minimum:
+- ID rumah.
+- Blok.
+- Nomor rumah.
+- Alamat.
+- Status rumah: aktif/kosong/nonaktif.
+- ID warga/pemilik utama.
+- Nomor meter air.
+- Status pelanggan air.
+- Catatan.
+
+Relasi:
+Satu rumah dapat memiliki satu atau beberapa penghuni, sesuai kebutuhan
+sistem. Satu warga dapat dikaitkan dengan satu rumah utama.
+
+9. DATA WARGA
+
+Field minimum:
+- ID warga.
+- Nama lengkap.
+- Nomor rumah.
+- Nomor WhatsApp.
+- Email (opsional).
+- Status penghuni.
+- Username/email login.
+- Role.
+- Status akun.
+- Tanggal dibuat.
+
+Data pribadi harus dibatasi berdasarkan role.
+
+10. TAGIHAN AIR
+
+Sistem mendukung pencatatan tagihan berdasarkan meter air.
+
+Field:
+- ID tagihan.
+- Rumah.
+- Periode.
+- Meter awal.
+- Meter akhir.
+- Pemakaian.
+- Tarif.
+- Biaya/tagihan.
+- Denda (jika ada).
+- Total tagihan.
+- Jatuh tempo.
+- Status pembayaran.
+- Catatan.
+- Tanggal dibuat.
+- Dibuat oleh.
+
+Formula dasar:
+Pemakaian = Meter Akhir - Meter Awal
+
+Jika tarif per m3:
+Tagihan Dasar = Pemakaian x Tarif
+
+Total Tagihan = Tagihan Dasar + Denda - Potongan (jika ada)
+
+Sistem harus mencegah meter akhir lebih kecil dari meter awal kecuali
+pengurus melakukan koreksi dengan alasan yang tercatat.
+
+Fitur opsional yang dapat dipersiapkan:
+- Foto meter air.
+- Riwayat pemakaian.
+- Grafik penggunaan per rumah.
+
+11. TAGIHAN SAMPAH
+
+Tagihan sampah dapat menggunakan nominal tetap atau nominal yang dapat
+ditentukan per periode.
+
+Field:
+- ID tagihan.
+- Rumah.
+- Periode.
+- Nominal.
+- Denda (opsional).
+- Potongan (opsional).
+- Total.
+- Jatuh tempo.
+- Status.
+- Catatan.
+- Tanggal dibuat.
+- Dibuat oleh.
+
+Sistem dapat membuat tagihan bulanan untuk seluruh rumah aktif.
+
+12. STATUS TAGIHAN
+
+Status minimum:
+- BELUM_BAYAR
+- LUNAS
+- JATUH_TEMPO
+- DIBATALKAN
+
+Status pembayaran hanya dapat diubah oleh pengurus atau proses sistem yang
+telah diotorisasi.
+
+13. PEMBAYARAN
+
+Pengurus dapat mencatat pembayaran warga.
+
+Field:
+- ID pembayaran.
+- Rumah.
+- Warga.
+- Jenis: AIR/SAMPAH/LAINNYA.
+- ID tagihan.
+- Periode.
+- Nominal.
+- Tanggal pembayaran.
+- Metode pembayaran.
+- Nomor referensi transaksi (opsional).
+- Bukti pembayaran (opsional).
+- Catatan.
+- Dicatat oleh.
+- Waktu pencatatan.
+
+Metode:
+- Tunai
+- Transfer
+- Lainnya
+
+Alur:
+Warga membayar -> Pengurus menerima pembayaran -> Pengurus mencatat
+pembayaran -> Sistem mengubah status tagihan menjadi LUNAS -> Warga
+melihat status terbaru.
+
+14. KAS MASUK
+
+Kategori contoh:
+- Iuran warga.
+- Pembayaran air.
+- Pembayaran sampah.
+- Denda.
+- Pendapatan lainnya.
+
+Field:
+- ID transaksi.
+- Tanggal.
+- Sumber.
+- Kategori.
+- Nominal.
+- Keterangan.
+- Bukti transaksi.
+- Jenis dana: KAS_UMUM/AIR/SAMPAH.
+- Dicatat oleh.
+- Timestamp.
+
+15. KAS KELUAR
+
+Kategori contoh:
+- Operasional air.
+- Operasional sampah.
+- Kebersihan.
+- Keamanan.
+- Perbaikan fasilitas.
+- Listrik fasilitas umum.
+- Pembelian perlengkapan.
+- Pengeluaran lainnya.
+
+Field:
+- ID transaksi.
+- Tanggal.
+- Kategori.
+- Nominal.
+- Keterangan.
+- Bukti transaksi.
+- Jenis dana: KAS_UMUM/AIR/SAMPAH.
+- Dicatat oleh.
+- Timestamp.
+
+16. PEMISAHAN DANA
+
+Sistem harus mampu memisahkan minimal:
+- KAS UMUM
+- DANA AIR
+- DANA SAMPAH
+
+Saldo masing-masing dihitung dari transaksi yang terkait.
+
+Contoh:
+Saldo = Total Kas Masuk - Total Kas Keluar
+
+Sistem tidak boleh menganggap seluruh dana sebagai satu saldo jika transaksi
+memiliki sumber dana berbeda.
+
+17. LAPORAN KEUANGAN
+
+Laporan minimal:
+- Laporan kas umum.
+- Laporan keuangan air.
+- Laporan keuangan sampah.
+- Laporan pemasukan.
+- Laporan pengeluaran.
+- Rekap saldo.
+- Rekap pembayaran.
+- Rekap tunggakan.
+- Laporan bulanan.
+
+Filter:
+- Periode tanggal.
+- Bulan.
+- Tahun.
+- Jenis dana.
+- Kategori.
+- Blok.
+- Status pembayaran.
+
+Export:
+- PDF
+- Excel/CSV
+
+18. LAPORAN TUNGGAKAN AIR
+
+Pengurus dapat melihat:
+- Rumah belum bayar.
+- Nama warga.
+- Periode.
+- Nominal.
+- Jatuh tempo.
+- Lama tunggakan.
+- Total tunggakan.
+
+Filter:
+- Bulan/periode.
+- Blok.
+- Rumah.
+- Status.
+
+19. LAPORAN TUNGGAKAN SAMPAH
+
+Pengurus dapat melihat:
+- Rumah belum bayar.
+- Nama warga.
+- Periode.
+- Nominal.
+- Jatuh tempo.
+- Lama tunggakan.
+- Total tunggakan.
+
+20. TRANSPARANSI KEUANGAN WARGA
+
+Warga dapat melihat ringkasan keuangan yang ditentukan pengurus.
+
+Contoh:
+Bulan September 2026
+
+Kas Umum:
+Pemasukan   Rp xx.xxx.xxx
+Pengeluaran Rp xx.xxx.xxx
+Saldo       Rp xx.xxx.xxx
+
+Dana Air:
+Pemasukan   Rp xx.xxx.xxx
+Pengeluaran Rp xx.xxx.xxx
+
+Dana Sampah:
+Pemasukan   Rp xx.xxx.xxx
+Pengeluaran Rp xx.xxx.xxx
+
+Warga tidak melihat:
+- Nomor rekening.
+- Informasi rekening pribadi.
+- Data pribadi warga lain.
+- Bukti transaksi yang mengandung informasi sensitif.
+- Detail internal pengurus yang tidak dipublikasikan.
+
+21. PENGUMUMAN
+
+Pengurus dapat:
+- Membuat pengumuman.
+- Mengedit pengumuman.
+- Menghapus pengumuman.
+- Menentukan status publikasi.
+
+Warga dapat:
+- Melihat pengumuman yang dipublikasikan.
+
+Field:
+- Judul.
+- Isi.
+- Lampiran opsional.
+- Tanggal publikasi.
+- Status.
+- Dibuat oleh.
+
+22. AUTENTIKASI
+
+Login menggunakan:
+- Email/username.
+- Password.
+
+Fitur:
+- Login.
+- Logout.
+- Ganti password.
+- Reset password jika sistem mendukung email/WhatsApp.
+- Status akun aktif/nonaktif.
+
+Setiap akun memiliki role:
+- PENGURUS
+- WARGA
+
+23. AUDIT LOG
+
+Sistem menyimpan riwayat aktivitas penting.
+
+Contoh:
+- Pengurus membuat transaksi.
+- Pengurus mengubah transaksi.
+- Pengurus menghapus transaksi.
+- Pengurus mengubah tagihan.
+- Pengurus mengubah status pembayaran.
+- Pengurus mengubah data warga.
+
+Field:
+- User.
+- Role.
+- Aktivitas.
+- Modul.
+- ID data terkait.
+- Data sebelum perubahan (jika diperlukan).
+- Data sesudah perubahan (jika diperlukan).
+- Timestamp.
+
+Untuk data keuangan, penghapusan permanen sebaiknya dihindari. Lebih aman
+menggunakan status VOID/DIBATALKAN agar riwayat tetap tersedia.
+
+24. NOTIFIKASI
+
+V1.0:
+- Notifikasi dalam dashboard untuk tagihan/tunggakan.
+
+Pengembangan berikutnya:
+- WhatsApp reminder.
+- Email.
+- Push notification.
+
+25. KEAMANAN
+
+Minimum:
+- Password di-hash.
+- Session/token aman.
+- Authorization berdasarkan role.
+- Backend memvalidasi permission.
+- Validasi input.
+- Proteksi terhadap SQL injection.
+- Proteksi XSS.
+- Proteksi CSRF jika menggunakan session-based authentication.
+- Rate limiting login/API.
+- Backup database berkala.
+- Audit log untuk aktivitas penting.
+- HTTPS pada production.
+- File upload dibatasi tipe dan ukuran.
+- Akses file bukti transaksi harus terkontrol.
+
+26. PRIVASI DATA
+
+Data warga merupakan data terbatas.
+
+Aturan:
+- Warga hanya dapat mengakses data rumahnya sendiri.
+- Warga tidak dapat melihat data pribadi warga lain.
+- Warga tidak dapat mengakses endpoint admin.
+- Informasi keuangan publik hanya menampilkan data yang memang ditetapkan
+  untuk transparansi.
+- Dokumen/bukti transaksi tidak boleh dapat diakses publik tanpa otorisasi.
+
+27. NAVIGASI PENGURUS
+
+Sidebar:
+
+Dashboard
+├── Data Perumahan
+│   ├── Data Rumah
+│   └── Data Warga
+├── Tagihan
+│   ├── Tagihan Air
+│   └── Tagihan Sampah
+├── Pembayaran
+├── Keuangan
+│   ├── Kas Masuk
+│   └── Kas Keluar
+├── Laporan
+│   ├── Keuangan
+│   ├── Air
+│   ├── Sampah
+│   └── Tunggakan
+├── Pengumuman
+├── Audit Log
+└── Pengaturan
+
+28. NAVIGASI WARGA
+
+Dashboard
+├── Rumah Saya
+├── Tagihan Saya
+│   ├── Air
+│   └── Sampah
+├── Riwayat Pembayaran
+├── Transparansi Keuangan
+├── Pengumuman
+└── Profil
+
+29. ALUR UTAMA PENGELOLAAN AIR
+
+Awal periode
+-> Pengurus memasukkan meter awal/akhir
+-> Sistem menghitung pemakaian
+-> Sistem menghitung tagihan
+-> Tagihan diterbitkan
+-> Warga melihat tagihan
+-> Warga membayar
+-> Pengurus mencatat pembayaran
+-> Status menjadi LUNAS
+-> Transaksi masuk ke laporan
+-> Warga melihat riwayat pembayaran.
+
+30. ALUR UTAMA SAMPAH
+
+Awal periode
+-> Pengurus membuat tagihan sampah
+-> Sistem membuat tagihan rumah aktif
+-> Warga melihat tagihan
+-> Warga membayar
+-> Pengurus mencatat pembayaran
+-> Status menjadi LUNAS
+-> Transaksi masuk laporan
+-> Warga melihat status.
+
+31. ALUR KAS
+
+Kas masuk:
+Sumber dana
+-> Input transaksi
+-> Validasi
+-> Simpan
+-> Saldo diperbarui
+-> Masuk laporan.
+
+Kas keluar:
+Pengeluaran
+-> Input transaksi
+-> Validasi
+-> Simpan
+-> Saldo diperbarui
+-> Masuk laporan.
+
+32. KEBUTUHAN DATABASE MINIMAL
+
+Tabel yang disarankan:
+- users
+- roles
+- houses
+- residents
+- water_meters
+- water_bills
+- garbage_bills
+- payments
+- cash_transactions
+- announcements
+- audit_logs
+
+Jika kebutuhan berkembang:
+- payment_methods
+- fund_accounts
+- expense_categories
+- income_categories
+- attachments
+- notification_logs
+
+Relasi utama:
+users -> residents
+residents -> houses
+houses -> water_meters
+houses -> water_bills
+houses -> garbage_bills
+bills -> payments
+cash_transactions -> houses/residents (opsional)
+users -> audit_logs
+
+33. BUSINESS RULES
+
+BR-001:
+Hanya pengurus yang dapat membuat atau mengubah data keuangan.
+
+BR-002:
+Warga hanya memiliki akses READ terhadap informasi keuangan.
+
+BR-003:
+Warga hanya dapat melihat tagihan dan pembayaran rumah yang terkait
+dengan akunnya.
+
+BR-004:
+Warga tidak boleh mengakses data warga lain melalui URL/API.
+
+BR-005:
+Tagihan yang sudah lunas tidak boleh diubah secara sembarangan. Perubahan
+harus tercatat dalam audit log.
+
+BR-006:
+Transaksi keuangan yang sudah tercatat sebaiknya tidak dihapus permanen.
+Gunakan pembatalan/VOID.
+
+BR-007:
+Saldo dihitung berdasarkan transaksi valid.
+
+BR-008:
+Transaksi yang VOID tidak dihitung dalam saldo.
+
+BR-009:
+Meter akhir tidak boleh lebih kecil daripada meter awal tanpa proses koreksi.
+
+BR-010:
+Setiap transaksi keuangan wajib memiliki tanggal, nominal, kategori, dan
+keterangan minimum.
+
+34. NON-FUNCTIONAL REQUIREMENTS
+
+Performa:
+- Dashboard harus dapat digunakan dengan nyaman pada koneksi internet
+  standar.
+- Query laporan harus menggunakan pagination/filter jika data besar.
+
+Responsif:
+- Mobile-first untuk warga.
+- Desktop/tablet friendly untuk pengurus.
+
+Reliability:
+- Backup database rutin.
+- Error handling yang jelas.
+- Tidak kehilangan transaksi ketika terjadi kegagalan request.
+
+Maintainability:
+- Struktur kode modular.
+- API dan business logic dipisahkan.
+- Validasi terpusat.
+- Dokumentasi endpoint.
+
+35. REKOMENDASI TEKNOLOGI
+
+Frontend:
+- Next.js/React
+- Tailwind CSS
+
+Backend:
+- Next.js API atau backend terpisah sesuai kebutuhan.
+
+Database:
+- PostgreSQL
+
+Authentication:
+- Auth.js atau sistem autentikasi yang sesuai stack.
+
+Storage:
+- Object storage untuk bukti transaksi/foto meter jika diperlukan.
+
+Deployment:
+- Vercel untuk frontend/Next.js.
+- PostgreSQL managed database.
+
+Catatan:
+Stack dapat diubah sesuai kemampuan developer. Prioritas utama adalah
+keamanan, role-based access control, integritas transaksi, dan kemudahan
+maintenance.
+
+36. MVP / PRIORITAS IMPLEMENTASI
+
+PHASE 1 - FONDASI
+- Authentication.
+- Role Pengurus/Warga.
+- Data rumah.
+- Data warga.
+- Permission system.
+- Dashboard dasar.
+
+PHASE 2 - TAGIHAN
+- Tagihan air.
+- Tagihan sampah.
+- Pembayaran.
+- Status lunas/belum bayar.
+- Daftar tunggakan.
+
+PHASE 3 - KEUANGAN
+- Kas masuk.
+- Kas keluar.
+- Pemisahan dana.
+- Saldo.
+- Laporan.
+
+PHASE 4 - WARGA
+- Dashboard warga.
+- Tagihan saya.
+- Riwayat pembayaran.
+- Transparansi keuangan.
+- Pengumuman.
+
+PHASE 5 - KEAMANAN DAN KUALITAS
+- Audit log.
+- Backup.
+- Validasi.
+- Authorization backend.
+- Export PDF/Excel.
+- Testing.
+
+37. FITUR PENGEMBANGAN V2
+
+- Upload foto meter air.
+- Pembayaran online.
+- Integrasi payment gateway.
+- WhatsApp notification.
+- Pengingat otomatis tagihan.
+- Push notification.
+- Grafik penggunaan air.
+- Pengaduan warga.
+- Inventaris fasilitas.
+- Jadwal kerja bakti.
+- Booking fasilitas umum.
+- Arsip dokumen.
+- Multi-pengurus dengan permission yang lebih detail.
+
+38. KRITERIA SELESAI MVP
+
+MVP dianggap selesai apabila:
+- Pengurus dapat login.
+- Warga dapat login.
+- Role berjalan dengan benar.
+- Pengurus dapat mengelola rumah dan warga.
+- Pengurus dapat membuat tagihan air dan sampah.
+- Pengurus dapat mencatat pembayaran.
+- Sistem dapat menampilkan rumah yang belum membayar.
+- Pengurus dapat mencatat kas masuk/keluar.
+- Sistem menghitung saldo dengan benar.
+- Sistem menghasilkan laporan.
+- Warga dapat melihat informasi rumahnya.
+- Warga dapat melihat tagihan dan riwayat pembayaran.
+- Warga dapat melihat transparansi keuangan.
+- Warga tidak dapat mengubah data melalui UI maupun API.
+- Aktivitas penting pengurus tercatat.
+- Data sensitif tidak dapat diakses warga lain.
+
+39. CATATAN PRODUK
+
+Prinsip utama sistem:
+"Pengurus mengelola, warga mengetahui."
+
+Sistem bukan marketplace dan bukan aplikasi pembayaran pada tahap awal.
+Fokus V1.0 adalah administrasi, pencatatan, pelaporan, dan transparansi.
+
+Prioritas desain:
+1. Mudah digunakan.
+2. Data keuangan akurat.
+3. Hak akses aman.
+4. Transparansi.
+5. Riwayat perubahan jelas.
+6. Mobile-friendly.
+7. Mudah dikembangkan.
+
+END OF PRD

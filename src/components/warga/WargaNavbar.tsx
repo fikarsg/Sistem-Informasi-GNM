@@ -128,43 +128,62 @@ export function WargaNavbar() {
         )}
       </header>
 
-      {/* Mobile Bottom Quick Bar for quick access */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-slate-200 flex items-center justify-around py-2 px-1">
+      {/* Mobile Bottom Navigation Bar (Sangat nyaman dioperasikan dengan satu jempol) */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200/90 shadow-lg shadow-slate-900/10 px-2 py-1.5 flex items-center justify-around">
         <Link
           href="/warga"
-          className={`flex flex-col items-center text-[10px] ${
-            pathname === '/warga' ? 'text-emerald-600 font-bold' : 'text-slate-500'
+          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all ${
+            pathname === '/warga'
+              ? 'text-emerald-700 font-bold bg-emerald-50/80 scale-105'
+              : 'text-slate-500 hover:text-slate-800'
           }`}
         >
           <LayoutDashboard className="w-4 h-4 mb-0.5" />
-          Beranda
+          <span className="text-[10px]">Beranda</span>
         </Link>
         <Link
           href="/warga/tagihan"
-          className={`flex flex-col items-center text-[10px] ${
-            pathname === '/warga/tagihan' ? 'text-emerald-600 font-bold' : 'text-slate-500'
+          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all ${
+            pathname === '/warga/tagihan'
+              ? 'text-emerald-700 font-bold bg-emerald-50/80 scale-105'
+              : 'text-slate-500 hover:text-slate-800'
           }`}
         >
           <Receipt className="w-4 h-4 mb-0.5" />
-          Tagihan
+          <span className="text-[10px]">Tagihan</span>
         </Link>
         <Link
           href="/warga/riwayat"
-          className={`flex flex-col items-center text-[10px] ${
-            pathname === '/warga/riwayat' ? 'text-emerald-600 font-bold' : 'text-slate-500'
+          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all ${
+            pathname === '/warga/riwayat'
+              ? 'text-emerald-700 font-bold bg-emerald-50/80 scale-105'
+              : 'text-slate-500 hover:text-slate-800'
           }`}
         >
           <History className="w-4 h-4 mb-0.5" />
-          Riwayat
+          <span className="text-[10px]">Riwayat</span>
         </Link>
         <Link
           href="/warga/transparansi"
-          className={`flex flex-col items-center text-[10px] ${
-            pathname === '/warga/transparansi' ? 'text-emerald-600 font-bold' : 'text-slate-500'
+          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all ${
+            pathname === '/warga/transparansi'
+              ? 'text-emerald-700 font-bold bg-emerald-50/80 scale-105'
+              : 'text-slate-500 hover:text-slate-800'
           }`}
         >
           <PieChart className="w-4 h-4 mb-0.5" />
-          Kas
+          <span className="text-[10px]">Kas RT</span>
+        </Link>
+        <Link
+          href="/warga/profil"
+          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all ${
+            pathname === '/warga/profil'
+              ? 'text-emerald-700 font-bold bg-emerald-50/80 scale-105'
+              : 'text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <User className="w-4 h-4 mb-0.5" />
+          <span className="text-[10px]">Profil</span>
         </Link>
       </nav>
     </>

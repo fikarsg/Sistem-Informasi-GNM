@@ -1,0 +1,27 @@
+Cara Menggunakan Fitur Akun Warga:
+Login sebagai Pengurus:
+
+Buka: https://sistem-informasi-gnm.vercel.app/login
+Masukkan email & password pengurus yang sudah Anda buat sebelumnya.
+Buka Menu "Data Warga" (/admin/warga):
+
+Klik tombol biru "Tambah Warga & Akun".
+Masukkan Nama Lengkap, Rumah Terkait, No. WhatsApp, dan Email.
+Centang opsi: "Buatkan Akun Login Portal Warga Sekaligus".
+Anda bisa memasukkan password sendiri atau klik "Acak Password" (misal: gnm7x9a2).
+Klik "Daftarkan Warga".
+Kirim Akses ke Warga:
+
+Setelah berhasil didaftarkan, akan muncul popup detail akun:
+Email Login
+Password
+Link Portal
+Anda bisa klik tombol "Salin Informasi Akun" atau tombol hijau "Kirim Akses Akun via WhatsApp" (otomatis membuka chat WhatsApp warga bersangkutan dengan format pesan siap kirim).
+Warga Login Mandiri:
+
+Warga membuka https://sistem-informasi-gnm.vercel.app/login
+Memasukkan email & password yang Anda berikan.
+Warga langsung masuk ke portal warga mereka sendiri: hanya melihat tagihan air rumahnya, iuran sampah rumahnya, riwayat pembayaran rumahnya, serta transparansi kas perumahan.
+Jika Warga Lupa Password:
+
+Di daftar tabel warga, pengurus cukup klik tombol "Reset Password" (ikon kunci), buat password baru, lalu kirimkan kembali ke warga.

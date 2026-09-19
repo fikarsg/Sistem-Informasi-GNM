@@ -128,7 +128,7 @@ export default function WargaDashboardPage() {
             {house ? `Blok ${house.block} - No. ${house.house_number}` : 'Rumah Warga'}
           </h1>
           <p className="text-xs text-emerald-100">
-            {house?.address || 'Perumahan Griya Nusantara Mandiri (GNM)'}
+            {house?.address || 'Perumahan Graha Nanggala Mekar (GNM)'}
           </p>
         </div>
 

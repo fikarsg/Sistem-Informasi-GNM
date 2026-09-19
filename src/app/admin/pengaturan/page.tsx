@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase/client';
 import { Settings, Save, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function PengaturanPage() {
-  const [housingName, setHousingName] = useState('Perumahan Griya Nusantara Mandiri (GNM)');
+  const [housingName, setHousingName] = useState('Perumahan Graha Nanggala Mekar (GNM)');
   const [waterRate, setWaterRate] = useState('3500');
   const [garbageFee, setGarbageFee] = useState('25000');
   const [dueDateDay, setDueDateDay] = useState('20');

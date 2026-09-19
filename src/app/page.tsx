@@ -41,7 +41,7 @@ export default function HomePage() {
                 </span>
               </div>
               <p className="text-[11px] text-slate-500 font-medium hidden sm:block">
-                Perumahan Griya Nusantara Mandiri
+                Perumahan Graha Nanggala Mekar
               </p>
             </div>
           </div>
@@ -371,7 +371,7 @@ export default function HomePage() {
               <Building2 className="w-4 h-4" />
             </div>
             <span className="font-bold text-slate-200">SIP-GNM</span>
-            <span className="text-slate-500">| Perumahan Griya Nusantara Mandiri</span>
+            <span className="text-slate-500">| Perumahan Graha Nanggala Mekar</span>
           </div>
 
           <div className="flex items-center gap-2 text-[11px] text-slate-400">
@@ -380,7 +380,7 @@ export default function HomePage() {
           </div>
 
           <p className="text-slate-500 text-[11px]">
-            © 2026 SIP-GNM. Hak Cipta Dilindungi.
+            © 2026 SIP-GNM by Fikar. Hak Cipta Dilindungi.
           </p>
         </div>
       </footer>

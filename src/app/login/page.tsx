@@ -159,6 +159,10 @@ function LoginForm() {
             </p>
           </div>
         </div>
+
+        <p className="mt-6 text-center text-[11px] text-slate-400">
+          © 2026 SIP-GNM by Fikar • Perumahan Graha Nanggala Mekar
+        </p>
       </div>
     </div>
   );

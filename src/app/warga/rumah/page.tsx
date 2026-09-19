@@ -83,7 +83,7 @@ export default function WargaRumahPage() {
               <h2 className="text-lg font-bold text-slate-900">
                 Blok {house.block} - Nomor {house.house_number}
               </h2>
-              <p className="text-xs text-slate-500">{house.address || 'Perumahan Griya Nusantara Mandiri'}</p>
+              <p className="text-xs text-slate-500">{house.address || 'Perumahan Graha Nanggala Mekar'}</p>
             </div>
           </div>
           <span className="px-3 py-1 bg-emerald-50 text-emerald-700 font-semibold text-xs rounded-full border border-emerald-200">

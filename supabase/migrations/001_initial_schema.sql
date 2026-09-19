@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS public.system_settings (
 
 -- Insert default system settings
 INSERT INTO public.system_settings (key, value, description) VALUES
-('HOUSING_NAME', 'Perumahan Griya Nusantara Mandiri (GNM)', 'Nama perumahan'),
+('HOUSING_NAME', 'Perumahan Graha Nanggala Mekar (GNM)', 'Nama perumahan'),
 ('WATER_RATE_PER_M3', '3500', 'Tarif air default per m3 (Rp)'),
 ('GARBAGE_FEE_MONTHLY', '25000', 'Iuran sampah default per bulan (Rp)'),
 ('DUE_DATE_DAY_OF_MONTH', '20', 'Tanggal jatuh tempo bulanan (1-28)')

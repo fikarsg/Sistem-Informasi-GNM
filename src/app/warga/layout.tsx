@@ -1,5 +1,7 @@
 import { WargaNavbar } from '@/components/warga/WargaNavbar';
 
+export const dynamic = 'force-dynamic';
+
 export default function WargaLayout({
   children,
 }: {
